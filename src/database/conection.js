@@ -18,7 +18,6 @@ database: 'webstoreavr',
     } catch (error) {
         console.error(error);
     }
-  
+  }
 
-  
-}
+  export {sql}

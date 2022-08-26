@@ -6,7 +6,24 @@ POST {{api}}
 Content-Type: application/json
 
 {
-  "Name": "microphone",
-  "Description": "microphone samsung",
-  "Quantity": 5 
+  "Name": "Mouse black",
+  "Description": "muese little",
+  "Quantity": 9 
+}
+
+###
+GET {{api}}/10
+###
+DELETE {{api}}/1
+
+###
+GET {{api}}/count
+### update
+PUT {{api}}/10
+Content-Type: application/json
+
+{
+  "Name": "Mouse white modificado",
+  "Description": "muese big mod",
+  "Quantity": 18 
 }
