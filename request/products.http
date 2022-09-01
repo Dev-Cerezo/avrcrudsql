@@ -6,24 +6,24 @@ POST {{api}}
 Content-Type: application/json
 
 {
-  "Name": "Mouse black",
-  "Description": "muese little",
-  "Quantity": 9 
+  "Name": "teclado rjo",
+  "Description": "es de color rojo",
+  "Quantity": 14
 }
 
 ###
-GET {{api}}/10
+GET {{api}}/14
 ###
-DELETE {{api}}/1
+DELETE {{api}}/14
 
 ###
 GET {{api}}/count
 ### update
-PUT {{api}}/10
+PUT {{api}}/14
 Content-Type: application/json
 
 {
-  "Name": "Mouse white modificado",
-  "Description": "muese big mod",
-  "Quantity": 18 
+  "Name": "teclado rojo modificado",
+  "Description": "es de color rojo con blanco",
+  "Quantity": 7
 }

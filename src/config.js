@@ -2,10 +2,10 @@
 import { config } from 'dotenv'
 config();
 
-console.log(process.env.NICKNAME)
+
 
 export default {
-    port:process.env.DB_USER || 300,
+    port:process.env.DB_PORT || 300,
     dbUser: process.env.DB_USER || '',
     dbPassword: process.env.DB_PASSWORD || '',
     dbServer: process.env.DB_SERVER || '',

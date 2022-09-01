@@ -1,13 +1,13 @@
 import { json, query } from 'express';
 import { restart } from 'nodemon';
-import {getConection,sql,queries} from '../database'
+import {getConection,sql,queries} from '../database' //importamos la conexion
 
 
 export const getProducts = async(req, res) => {
    try {
-    const pool = await getConection();
-   const result = await pool.request().query(queries.getAllProduct);
-   console.log(result)
+    const pool = await getConection(); //retorna el pool con su metodo request seguido del metodo query
+   const result = await pool.request().query(queries.getAllProduct);//request es hago una peticion, y query es que la peticion es una consulta query
+ //  console.log(result) ademas result tiene una propiedad recordset que tiene toda lainfo de la consulta
 res.json(result.recordset);
    } catch (error) {
     res.status(500)

@@ -8,7 +8,7 @@ exports["default"] = void 0;
 var _dotenv = require("dotenv");
 
 (0, _dotenv.config)();
-console.log(process.env.NICKNAME);
+console.log(" server on port: ", process.env.DB_PORT);
 var _default = {
   port: 4000
 };
