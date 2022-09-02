@@ -6,15 +6,15 @@ POST {{api}}
 Content-Type: application/json
 
 {
-  "Name": "teclado rjo",
-  "Description": "es de color rojo",
-  "Quantity": 14
+  "Name": "udifonos verdes",
+  "Description": "son de color verde",
+  "Quantity": 2
 }
 
 ###
 GET {{api}}/14
 ###
-DELETE {{api}}/14
+DELETE {{api}}/23
 
 ###
 GET {{api}}/count
