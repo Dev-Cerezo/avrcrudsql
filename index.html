@@ -87,6 +87,24 @@
     
   </body>
   <script>
+let iduser = 0;
+var editar = false;
+$(document).on('click', '.editar', function () {
+           iduser = $(this).data("id");  
+           PintarUsuario(iduser);
+           editar = true;
+        });
+
+        function PintarUsuario(iduser){
+
+$.get("http://localhost:4000/products/" + iduser)
+.done(function( response ) {
+    console.log(response);
+    $("#txtnombres").val(response.Name),
+    $("#txtdescription").val(response.Description),
+    $("#txtdocument").val(response.Quantity)
+  });
+}
     
 obtener();
     function obtener(){
@@ -103,7 +121,7 @@ obtener();
                 $("<td>").text(fila.Quantity),
                 $("<td>").text(fila.date),
                     $("<td>").append(
-                        $("<button>").data("id",fila.id).addClass("btn btn-primary btn-sm mr-1 editar").text("Editar").attr({"type":"button"}),
+                        $("<button data-toggle='modal' data-target='#exampleModal'>").data("id",fila.id).addClass("btn btn-primary btn-sm mr-1 editar").text("Editar").attr({"type":"button"}),
                         $("<button>").data("id",fila.id).addClass("btn btn-danger btn-sm eliminar").text("Eliminar").attr({"type":"button"})
                     )
                 ).appendTo(".table")
@@ -112,9 +130,9 @@ obtener();
     }
 
     function GuardarUsuario(){
-            
 
-            var data = {
+      if (editar == false) {
+        var data = {
                 Name : $("#txtnombres").val(),
                 Description : $("#txtdescription").val(),
                 Quantity : $("#txtdocument").val(),
@@ -131,13 +149,54 @@ obtener();
                     alert("usuario no creado")
                 }
             });
+      }else{
+        var data = {
+                  id : iduser,
+                Name : $("#txtnombres").val(),
+                Description : $("#txtdescription").val(),
+                Quantity : $("#txtdocument").val(),
+            }
+
+                $.ajax({
+                method: "PUT",
+                url: "http://localhost:4000/products/"+iduser,
+                contentType: 'application/json',
+                data: JSON.stringify(data), // access in body
+                })
+                .done(function( response ) {
+                    console.log(response);
+                    if(response){
+                        alert("Se guardaron los cambios");
+                        window.location = "Index.html";
+                    }else{
+                        alert("Error al Modificar")
+                    }
+                });
+                editar = false;
+      }
+            
+
+           
         
 
     }
 
-    $(document).on('click', '.editar', function () {
-            console.log($(this).data("id"));
+    $(document).on('click', '.eliminar', function () {
+            iduser = $(this).data("id");
+
+            $.ajax({
+            method: "DELETE",
+            url: "http://localhost:4000/products/" + iduser})
+            .done(function( response ) {
+                console.log(iduser);
+                if(response){
+                    Obtener();
+                }else{
+                    alert("Error al eliminar")
+                }
+            });
             
         });
+
   </script>
 </html>

@@ -65,14 +65,14 @@ exports.getProducts = getProducts;
 
 var createNewProduct = /*#__PURE__*/function () {
   var _ref2 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(req, res) {
-    var _req$body, Name, Description, Quantity, pool;
+    var _req$body, Name, Description, Quantity, status, pool;
 
     return _regeneratorRuntime().wrap(function _callee2$(_context2) {
       while (1) {
         switch (_context2.prev = _context2.next) {
           case 0:
             _req$body = req.body, Name = _req$body.Name, Description = _req$body.Description;
-            Quantity = req.body.Quantity;
+            Quantity = req.body.Quantity=req.body.status;
 
             if (!(Name == null || Description == null)) {
               _context2.next = 4;
@@ -92,13 +92,14 @@ var createNewProduct = /*#__PURE__*/function () {
           case 8:
             pool = _context2.sent;
             _context2.next = 11;
-            return pool.request().input('name', _database.sql.VarChar, Name).input('description', _database.sql.Text, Description).input('quantity', _database.sql.Int, Quantity).query(_database.queries.addNewProduct);
+            return pool.request().input('name', _database.sql.VarChar, Name).input('description', _database.sql.Text, Description).input('quantity', _database.sql.Int, Quantity).input('status', _database.sql.Int, status).query(_database.queries.addNewProduct);
 
           case 11:
             res.json({
               Name: Name,
               Description: Description,
-              Quantity: Quantity
+              Quantity: Quantity,
+              status: status
             });
             _context2.next = 18;
             break;

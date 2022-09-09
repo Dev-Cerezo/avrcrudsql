@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", {
 exports.queries = void 0;
 var queries = {
   getAllProduct: 'SELECT * FROM Products',
-  addNewProduct: "INSERT INTO Products(name,description,quantity) VALUES(@name,@description,@quantity)",
+  c: "INSERT INTO Products(name,description,quantity,status) VALUES(@name,@description,@quantity,@status)",
   getProductById: 'SELECT * FROM Products WHERE Id = @Id',
   deleteProduct: 'DELETE  FROM Products WHERE Id = @Id',
   getTotalProducts: 'SELECT COUNT(*) FROM Products',
